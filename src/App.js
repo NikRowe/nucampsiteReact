@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Main from './components/MainComponent';
-import { CAMPSITES } from './shared/campsites';
 import './App.css';
 
 class App extends Component {
