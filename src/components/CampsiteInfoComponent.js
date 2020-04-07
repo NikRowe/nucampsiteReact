@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardText, CardBody, Breadcrumb, BreadcrumbItem, Modal, ModalHeader, ModalBody, Button, Label, Col, Row } from 'reactstrap';
+import { Card, CardImg, CardText, CardBody, Breadcrumb, BreadcrumbItem, Modal, ModalHeader, ModalBody, Button, Label} from 'reactstrap';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Link } from 'react-router-dom';
 
@@ -64,8 +64,6 @@ function RenderComments({ comments }) {
 const required = val => val && val.length;
 const maxLength = len => val => !val || (val.length <= len);
 const minLength = len => val => val && (val.length >= len);
-const isNumber = val => !isNaN(+val);
-const validEmail = val => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
 class CommentForm extends Component {
     constructor(props) {
         super(props);
