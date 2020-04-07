@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardText, CardBody, Breadcrumb, BreadcrumbItem, Modal, ModalHeader, ModalBody, Button, Label} from 'reactstrap';
+import { Card, CardImg, CardText, CardBody, Breadcrumb, BreadcrumbItem, Modal, ModalHeader, ModalBody, Button, Label } from 'reactstrap';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Link } from 'react-router-dom';
 
-function CampsiteInfo({ campsite, comments }) {
+function CampsiteInfo({ campsite, comments, addComment }) {
     return (
         campsite
             ? <div className="container">
@@ -19,7 +19,11 @@ function CampsiteInfo({ campsite, comments }) {
                 </div>
                 <div className="row">
                     <RenderCampsite campsite={campsite} />
-                    <RenderComments comments={comments} />
+                    <RenderComments
+                        comments={comments}
+                        addComment={addComment}
+                        campsiteId={campsite.id}
+                    />
 
                 </div>
             </div>
@@ -40,7 +44,7 @@ function RenderCampsite({ campsite }) {
     );
 }
 
-function RenderComments({ comments }) {
+function RenderComments({ comments, addComment, campsiteId }) {
     if (comments) {
         return (
             <div className="col-md-5 m-1">
@@ -52,7 +56,7 @@ function RenderComments({ comments }) {
                     </div>
                 )
                 }
-                <CommentForm />
+                <CommentForm campsiteId={campsiteId} addComment={addComment} />
             </div>
         );
     }
@@ -80,9 +84,9 @@ class CommentForm extends Component {
         });
     }
 
-    handleSubmit = (values) => {
-        console.log('Current state is: ' + JSON.stringify(values));
-        alert('Current state is: ' + JSON.stringify(values));
+    handleSubmit(values) {
+        this.toggleModal();
+        this.props.addComment(this.props.campsiteId, values.rating, values.author, values.text);
     }
 
     render() {
@@ -135,8 +139,8 @@ class CommentForm extends Component {
                                 />
                             </div>
                             <div className="form-group">
-                                    <Button type="submit" color="primary">
-                                        Submit
+                                <Button type="submit" color="primary">
+                                    Submit
                                     </Button>
                             </div>
                         </LocalForm>
