@@ -2,8 +2,31 @@ import React, { Component } from 'react';
 import { Card, CardImg, CardText, CardBody, Breadcrumb, BreadcrumbItem, Modal, ModalHeader, ModalBody, Button, Label } from 'reactstrap';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Link } from 'react-router-dom';
+import { Loading } from './LoadingComponent';
 
-function CampsiteInfo({ campsite, comments, addComment }) {
+function CampsiteInfo({ campsite, comments, addComment, isLoading, errMess }) {
+    
+    if (isLoading) {
+        return (
+            <div className="container">
+                <div className="row">
+                    <Loading />
+                </div>
+            </div>
+        );
+    }
+    if (errMess) {
+        return (
+            <div className="container">
+                <div className="row">
+                    <div className="col">
+                        <h4>{errMess}</h4>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+    
     return (
         campsite
             ? <div className="container">
