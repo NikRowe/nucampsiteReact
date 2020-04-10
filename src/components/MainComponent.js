@@ -81,6 +81,7 @@ class Main extends Component {
             <div>
                 <Header />
                 <TransitionGroup>
+                    {/* className(S) below is how React Transitions knows what css properties to use */}
                     <CSSTransition key={this.props.location.key} classNames="page" timeout={300}>
                         <Switch>
                             <Route path='/home' component={HomePage} />
