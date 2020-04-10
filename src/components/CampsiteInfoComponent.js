@@ -6,7 +6,7 @@ import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
 
 
-function CampsiteInfo({ campsite, comments, addComment, isLoading, errMess }) {
+function CampsiteInfo({ campsite, comments, postComment, isLoading, errMess }) {
     
     if (isLoading) {
         return (
@@ -46,7 +46,7 @@ function CampsiteInfo({ campsite, comments, addComment, isLoading, errMess }) {
                     <RenderCampsite campsite={campsite} />
                     <RenderComments
                         comments={comments}
-                        addComment={addComment}
+                        postComment={postComment}
                         campsiteId={campsite.id}
                     />
 
@@ -69,7 +69,7 @@ function RenderCampsite({ campsite }) {
     );
 }
 
-function RenderComments({ comments, addComment, campsiteId }) {
+function RenderComments({ comments, postComment, campsiteId }) {
     if (comments) {
         return (
             <div className="col-md-5 m-1">
@@ -81,7 +81,7 @@ function RenderComments({ comments, addComment, campsiteId }) {
                     </div>
                 )
                 }
-                <CommentForm campsiteId={campsiteId} addComment={addComment} />
+                <CommentForm campsiteId={campsiteId} postComment={postComment} />
             </div>
         );
     }
@@ -111,7 +111,7 @@ class CommentForm extends Component {
 
     handleSubmit(values) {
         this.toggleModal();
-        this.props.addComment(this.props.campsiteId, values.rating, values.author, values.text);
+        this.props.postComment(this.props.campsiteId, values.rating, values.author, values.text);
     }
 
     render() {
