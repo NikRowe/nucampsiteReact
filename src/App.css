@@ -1,3 +1,4 @@
+/* General Styling */
 body {
   font-family: "Open Sans", sans-serif;
 }
@@ -21,11 +22,14 @@ h2 {
   min-height: 200px;
 }
 
+/* Footer */
 .site-footer {
   background-image: linear-gradient(#CEC8FF, white);
   padding: 20px 0;
 }
 
+
+/* Header - Navbar & Jumbo */
 .jumbotron {
   margin: 0;
   padding: 30px;
@@ -39,4 +43,27 @@ h2 {
 
 .navbar-dark {
   background-color: #901CAD;
+}
+
+
+/* Transitions */
+.page-enter {
+  opacity: 0; /* FADE */
+  /* Slide in/out transition */
+  transform: translateX(-100%);
+}
+
+.page-enter-active {
+  opacity: 1; /* FADE */
+  /* Slide in/out transition */
+  transform: translateX(0%);
+  transition: 300ms ease-out;
+}
+.page-exit {
+  opacity: 1;
+}
+
+.page-exit-active {
+  opacity: 0;
+  transition: 300ms ease-out;
 }
