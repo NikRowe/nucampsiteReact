@@ -67,3 +67,23 @@ h2 {
   opacity: 0;
   transition: 300ms ease-out;
 }
+
+.box {
+  position: relative;
+}
+
+.box-entered{
+  color: red;
+}
+
+.box-entering{
+  animation-name: box;
+  animation-duration: 4s;
+}
+@keyframes box {
+  0% {color: purple; left: 0px; top: 0px;}
+  0% {color: indigo; left: 200px; top: 0px;}
+  0% {color: teal; left: 200px; top: 200px;}
+  0% {color: blue; left: 0px; top: 200px;}
+  0% {color: purple; left: 0px; top: 0px;}
+}
